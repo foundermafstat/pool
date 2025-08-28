@@ -1,0 +1,25 @@
+export const SERVICES = [
+  {
+    slug: "pool-cages",
+    name: "Pool Cages",
+    description: "Hurricane-rated pool enclosures with premium materials.",
+  },
+  {
+    slug: "screen-enclosures",
+    name: "Screen Enclosures",
+    description:
+      "Durable, low-maintenance screen enclosures designed for Florida homes.",
+  },
+  {
+    slug: "lanai-screens",
+    name: "Lanai Screens",
+    description: "High-quality lanai screen installation and replacement.",
+  },
+] as const;
+
+export type Service = typeof SERVICES[number];
+export type ServiceSlug = Service["slug"];
+
+export function getServiceBySlug(slug: string) {
+  return SERVICES.find((s) => s.slug === slug);
+}
