@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CITIES } from "@/lib/locations";
+import Hero from "@/components/Hero";
+import { CITIES, cityTitle } from "@/lib/locations";
 
 export const metadata = {
   title: "Locations | Pool Cage Experts",
@@ -9,13 +10,23 @@ export const metadata = {
 export default function LocationsPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
-      <h1 className="text-3xl font-semibold mb-6">Service Locations</h1>
-      <ul className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      <Hero
+        title="Service Areas in Florida"
+        subtitle="Trusted pool cage and screen enclosure experts near you"
+        description="Fast quotes, premium materials, and hurricane-rated builds across Sarasota, Bradenton, Venice, and Lakewood Ranch."
+      />
+
+      <h2 className="mt-10 text-2xl font-semibold">Select Your City</h2>
+      <ul className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {CITIES.map((c) => (
-          <li key={c} className="border rounded p-4 hover:shadow-sm">
-            <Link href={`/locations/${c}`} className="text-blue-700 underline">
-              {c.replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())}
-            </Link>
+          <li key={c} className="rounded-lg border p-5 hover:shadow">
+            <h3 className="text-lg font-medium">{cityTitle(c)}, FL</h3>
+            <p className="mt-1 text-sm text-neutral-600">Installation, repair, and cleaning services.</p>
+            <div className="mt-3">
+              <Link href={`/locations/${c}`} className="text-blue-700 underline">
+                View services
+              </Link>
+            </div>
           </li>
         ))}
       </ul>

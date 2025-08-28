@@ -15,6 +15,24 @@ export const SERVICES = [
     name: "Lanai Screens",
     description: "High-quality lanai screen installation and replacement.",
   },
+  {
+    slug: "repair-maintenance",
+    name: "Repair & Maintenance",
+    description:
+      "Re-screening, structural reinforcement, leak sealing, hardware and paint restoration.",
+  },
+  {
+    slug: "cleaning-care",
+    name: "Cleaning & Care",
+    description:
+      "Soft-wash cleaning, mold/algae removal, and protective coatings to extend lifespan.",
+  },
+  {
+    slug: "additional",
+    name: "Additional Services",
+    description:
+      "Hurricane panels, retractable screens, leaf guards, design consulting, seasonal inspections.",
+  },
 ] as const;
 
 export type Service = typeof SERVICES[number];

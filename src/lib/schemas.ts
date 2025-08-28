@@ -26,3 +26,47 @@ export function getLocalBusinessSchema() {
     priceRange: "$$$",
   };
 }
+
+export function getServiceSchema(serviceName: string, description: string, slug?: string) {
+  const url = slug ? absoluteUrl(`/services/${slug}`) : undefined;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: serviceName,
+    description,
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Pool Cage Experts",
+      areaServed: CITIES.map((c) => `${c.replace(/-/g, " ")}, FL`),
+      url: absoluteUrl("/"),
+      telephone: "+1-941-555-0123",
+    },
+    areaServed: CITIES.map((c) => ({ "@type": "City", name: `${c.replace(/-/g, " ")}, FL` })),
+    ...(url ? { url } : {}),
+  };
+}
+
+export function getFAQSchema(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((i) => ({
+      "@type": "Question",
+      name: i.question,
+      acceptedAnswer: { "@type": "Answer", text: i.answer },
+    })),
+  };
+}
+
+export function getServicesItemListSchema(services: { slug: string; name: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: services.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: s.name,
+      url: absoluteUrl(`/services/${s.slug}`),
+    })),
+  };
+}

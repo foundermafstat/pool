@@ -1,5 +1,8 @@
 import Link from "next/link";
+import Script from "next/script";
+import Hero from "@/components/Hero";
 import { SERVICES } from "@/lib/services";
+import { getServicesItemListSchema } from "@/lib/schemas";
 
 export const metadata = {
   title: "Services | Pool Cage Experts",
@@ -8,12 +11,17 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
+  const itemList = getServicesItemListSchema(
+    SERVICES.map((s) => ({ slug: s.slug, name: s.name }))
+  );
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
-      <h1 className="text-3xl font-semibold mb-6">Our Services</h1>
-      <p className="text-neutral-600 mb-8">
-        Hurricane-rated installations with premium materials and warranty.
-      </p>
+      <Hero
+        title="Screen Enclosure Services in Sarasota, FL"
+        subtitle="Installation, repair, cleaning, and enhancements for pool cages, lanais, and patios."
+        description="Engineered, hurricane-rated solutions with premium materials. Serving Sarasota, Bradenton, Venice, and Lakewood Ranch."
+      />
+      <h2 className="text-2xl font-semibold mt-10 mb-4">Explore Services</h2>
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {SERVICES.map((s) => (
           <li key={s.slug} className="border rounded-lg p-6 hover:shadow">
@@ -30,6 +38,12 @@ export default function ServicesPage() {
           </li>
         ))}
       </ul>
+      <Script
+        id="ld-services-itemlist"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }}
+      />
     </main>
   );
 }
