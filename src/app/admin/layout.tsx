@@ -12,7 +12,7 @@ async function doSignOut() {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
+    <div className="mx-auto max-w-[1440px] px-4 py-8">
       <header className="mb-8 flex items-center justify-between">
         <nav className="flex items-center gap-4 text-sm">
           <Link href="/admin" className="underline">

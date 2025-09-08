@@ -6,6 +6,7 @@ import { defaultMetadata } from "@/lib/seo";
 import { getLocalBusinessSchema } from "@/lib/schemas";
 import { GA_MEASUREMENT_ID, GTM_ID, ADS_CONVERSION_ID, ADS_CONVERSION_LABEL } from "@/lib/analytics";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16 flex flex-col min-h-screen`}>
         <a href="#main" className="skip-link">Skip to content</a>
         <Header />
         {/* GTM */}
@@ -92,7 +93,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema()) }}
         />
 
-        {children}
+        <div className="flex-grow">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );

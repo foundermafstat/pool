@@ -15,7 +15,7 @@ export default function ServicesPage() {
     SERVICES.map((s) => ({ slug: s.slug, name: s.name }))
   );
   return (
-    <main className="mx-auto max-w-6xl px-4 py-12">
+    <main className="mx-auto max-w-[1440px] px-4 py-12">
       <Hero
         title="Screen Enclosure Services in Sarasota, FL"
         subtitle="Installation, repair, cleaning, and enhancements for pool cages, lanais, and patios."

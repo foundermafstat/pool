@@ -1,8 +1,12 @@
 export const CITIES = [
+  "st-petersburg",
   "sarasota",
-  "bradenton",
-  "venice",
-  "lakewood-ranch",
+  "fort-myers",
+  "naples",
+  "port-st-lucie",
+  "west-palm-beach",
+  "boca-raton",
+  "miami",
 ] as const;
 
 export type CitySlug = typeof CITIES[number];

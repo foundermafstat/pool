@@ -66,8 +66,9 @@
   top: 0;
 }
 
+/* Mobile-first media queries */
 :root {
-  --radius: 0.625rem;
+  --radius: 1.5rem; /* Match the rounded-3xl from the carousel */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -141,5 +142,49 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Add consistent rounded corners to common components */
+  .rounded-card {
+    @apply rounded-3xl overflow-hidden;
+  }
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  }
+  /* Mobile-first container styles */
+  .container-fluid {
+    @apply w-full px-4 mx-auto;
+    max-width: 100%;
+  }
+  .container {
+    @apply w-full px-4 mx-auto;
+    max-width: 100%;
+  }
+  /* Responsive breakpoints */
+  @screen md {
+    .container {
+      max-width: 768px;
+    }
+  }
+  @screen lg {
+    .container {
+      max-width: 1024px;
+    }
+  }
+  @screen xl {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  @screen 2xl {
+    .container {
+      max-width: 1440px;
+    }
   }
 }
